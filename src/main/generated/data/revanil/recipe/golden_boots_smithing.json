@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:gold_tool_materials",
+  "base": "minecraft:leather_boots",
+  "result": {
+    "id": "minecraft:golden_boots"
+  },
+  "template": "revanil:gold_upgrade_template"
+}

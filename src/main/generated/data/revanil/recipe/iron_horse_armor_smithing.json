@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:iron_tool_materials",
+  "base": "minecraft:leather_horse_armor",
+  "result": {
+    "id": "minecraft:iron_horse_armor"
+  },
+  "template": "revanil:iron_upgrade_template"
+}

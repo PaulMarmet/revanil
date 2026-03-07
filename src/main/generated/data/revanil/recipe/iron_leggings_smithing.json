@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:iron_tool_materials",
+  "base": "minecraft:leather_leggings",
+  "result": {
+    "id": "minecraft:iron_leggings"
+  },
+  "template": "revanil:iron_upgrade_template"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:iron_tool_materials",
+  "base": "minecraft:wooden_axe",
+  "result": {
+    "id": "minecraft:iron_axe"
+  },
+  "template": "revanil:iron_upgrade_template"
+}

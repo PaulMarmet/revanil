@@ -1,0 +1,12 @@
+{
+  "item.revanil.gold_upgrade_template": "Gold Upgrade Template",
+  "item.revanil.iron_upgrade_template": "Iron Upgrade Template",
+  "item.revanil.smithing_template.gold_upgrade.additions_slot_description": "Add Gold Ingot",
+  "item.revanil.smithing_template.gold_upgrade.applies_to": "Leather or Wooden Equipment",
+  "item.revanil.smithing_template.gold_upgrade.base_slot_description": "Add leather armor, wooden weapon, or tool",
+  "item.revanil.smithing_template.gold_upgrade.ingredients": "Gold Ingot",
+  "item.revanil.smithing_template.iron_upgrade.additions_slot_description": "Add Iron Ingot",
+  "item.revanil.smithing_template.iron_upgrade.applies_to": "Leather or Wooden Equipment",
+  "item.revanil.smithing_template.iron_upgrade.base_slot_description": "Add leather armor, wooden weapon, or tool",
+  "item.revanil.smithing_template.iron_upgrade.ingredients": "Iron Ingot"
+}

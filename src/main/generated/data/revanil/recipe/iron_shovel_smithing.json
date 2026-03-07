@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:iron_tool_materials",
+  "base": "minecraft:wooden_shovel",
+  "result": {
+    "id": "minecraft:iron_shovel"
+  },
+  "template": "revanil:iron_upgrade_template"
+}

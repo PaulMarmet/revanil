@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:gold_tool_materials",
+  "base": "minecraft:leather_chestplate",
+  "result": {
+    "id": "minecraft:golden_chestplate"
+  },
+  "template": "revanil:gold_upgrade_template"
+}

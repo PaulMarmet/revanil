@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "net.pm.revanil.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ArmorMaterialsMixin",
+    "BedBlockMixin",
+    "BedRuleMixin",
+    "EquipmentTypeMixin",
+    "JsonDataLoaderMixin",
+    "PlayerEntityMixin",
+    "RespawnAnchorBlockMixin",
+    "ToolMaterialsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "revanil:gold_upgrade_template",
+  "key": {
+    "M": "minecraft:gold_ingot",
+    "O": "minecraft:leather",
+    "X": "revanil:gold_upgrade_template"
+  },
+  "pattern": [
+    "OMO",
+    "MXM",
+    "OMO"
+  ],
+  "result": {
+    "count": 2,
+    "id": "revanil:gold_upgrade_template"
+  }
+}

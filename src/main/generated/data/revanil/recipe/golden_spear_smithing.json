@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:gold_tool_materials",
+  "base": "minecraft:wooden_spear",
+  "result": {
+    "id": "minecraft:golden_spear"
+  },
+  "template": "revanil:gold_upgrade_template"
+}

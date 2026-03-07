@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:gold_tool_materials",
+  "base": "minecraft:leather_helmet",
+  "result": {
+    "id": "minecraft:golden_helmet"
+  },
+  "template": "revanil:gold_upgrade_template"
+}

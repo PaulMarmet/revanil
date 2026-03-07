@@ -1,0 +1,45 @@
+package net.pm.revanil.data;
+
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.block.Block;
+import net.minecraft.registry.RegistryWrapper;
+import net.pm.revanil.Revanil;
+import net.pm.revanil.item.RItems;
+
+import java.util.concurrent.CompletableFuture;
+
+public class Lang extends FabricLanguageProvider {
+    public static final String IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.iron_upgrade.additions_slot_description";
+    public static final String IRON_UPGRADE_APPLIES_TO = "item."+ Revanil.MOD_ID+".smithing_template.iron_upgrade.applies_to";
+    public static final String IRON_UPGRADE_BASE_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.iron_upgrade.base_slot_description";
+    public static final String IRON_UPGRADE_INGREDIENTS = "item."+ Revanil.MOD_ID+".smithing_template.iron_upgrade.ingredients";
+    public static final String GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.additions_slot_description";
+    public static final String GOLD_UPGRADE_APPLIES_TO = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.applies_to";
+    public static final String GOLD_UPGRADE_BASE_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.base_slot_description";
+    public static final String GOLD_UPGRADE_INGREDIENTS = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.ingredients";
+
+    public Lang(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, "en_us", registryLookup);
+    }
+
+    @Override
+    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
+        translationBuilder.add(RItems.IRON_UPGRADE_TEMPLATE, "Iron Upgrade Template");
+        translationBuilder.add(IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, "Add Iron Ingot");
+        translationBuilder.add(IRON_UPGRADE_APPLIES_TO, "Leather or Wooden Equipment");
+        translationBuilder.add(IRON_UPGRADE_BASE_SLOT_DESCRIPTION, "Add leather armor, wooden weapon, or tool");
+        translationBuilder.add(IRON_UPGRADE_INGREDIENTS, "Iron Ingot");
+
+        translationBuilder.add(RItems.GOLD_UPGRADE_TEMPLATE, "Gold Upgrade Template");
+        translationBuilder.add(GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, "Add Gold Ingot");
+        translationBuilder.add(GOLD_UPGRADE_APPLIES_TO, "Leather or Wooden Equipment");
+        translationBuilder.add(GOLD_UPGRADE_BASE_SLOT_DESCRIPTION, "Add leather armor, wooden weapon, or tool");
+        translationBuilder.add(GOLD_UPGRADE_INGREDIENTS, "Gold Ingot");
+    }
+
+    public void addBlockWithItem(TranslationBuilder translationBuilder, Block block, String name) {
+        translationBuilder.add(block, name);
+        translationBuilder.add(block.asItem(), name);
+    }
+}

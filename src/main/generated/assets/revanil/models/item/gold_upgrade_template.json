@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "revanil:item/gold_upgrade_template"
+  }
+}
