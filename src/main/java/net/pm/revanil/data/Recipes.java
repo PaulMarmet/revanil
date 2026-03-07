@@ -13,6 +13,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.pm.revanil.Revanil;
 import net.pm.revanil.item.RItems;
@@ -26,21 +27,11 @@ public class Recipes extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
-    static final Map<Item, Item> GOLD_UPGRADE = new LinkedHashMap<>();
     static final Map<Item, Item> IRON_UPGRADE = new LinkedHashMap<>();
+    static final Map<Item, Item> GOLD_UPGRADE = new LinkedHashMap<>();
+    static final Map<Item, Item> DIAMOND_UPGRADE = new LinkedHashMap<>();
+    static final Map<Item, Item> NETHERITE_UPGRADE = new LinkedHashMap<>();
     public static void mapUpgrades() {
-        GOLD_UPGRADE.put(Items.WOODEN_AXE, Items.GOLDEN_AXE);
-        GOLD_UPGRADE.put(Items.WOODEN_HOE, Items.GOLDEN_HOE);
-        GOLD_UPGRADE.put(Items.WOODEN_PICKAXE, Items.GOLDEN_PICKAXE);
-        GOLD_UPGRADE.put(Items.WOODEN_SHOVEL, Items.GOLDEN_SHOVEL);
-        GOLD_UPGRADE.put(Items.WOODEN_SWORD, Items.GOLDEN_SWORD);
-        GOLD_UPGRADE.put(Items.WOODEN_SPEAR, Items.GOLDEN_SPEAR);
-        GOLD_UPGRADE.put(Items.LEATHER_HELMET, Items.GOLDEN_HELMET);
-        GOLD_UPGRADE.put(Items.LEATHER_CHESTPLATE, Items.GOLDEN_CHESTPLATE);
-        GOLD_UPGRADE.put(Items.LEATHER_LEGGINGS, Items.GOLDEN_LEGGINGS);
-        GOLD_UPGRADE.put(Items.LEATHER_BOOTS, Items.GOLDEN_BOOTS);
-        GOLD_UPGRADE.put(Items.LEATHER_HORSE_ARMOR, Items.GOLDEN_HORSE_ARMOR);
-        GOLD_UPGRADE.put(Items.NAUTILUS_SHELL, Items.GOLDEN_NAUTILUS_ARMOR);
         IRON_UPGRADE.put(Items.WOODEN_AXE, Items.IRON_AXE);
         IRON_UPGRADE.put(Items.WOODEN_HOE, Items.IRON_HOE);
         IRON_UPGRADE.put(Items.WOODEN_PICKAXE, Items.IRON_PICKAXE);
@@ -53,6 +44,42 @@ public class Recipes extends FabricRecipeProvider {
         IRON_UPGRADE.put(Items.LEATHER_BOOTS, Items.IRON_BOOTS);
         IRON_UPGRADE.put(Items.LEATHER_HORSE_ARMOR, Items.IRON_HORSE_ARMOR);
         IRON_UPGRADE.put(Items.NAUTILUS_SHELL, Items.IRON_NAUTILUS_ARMOR);
+        GOLD_UPGRADE.put(Items.WOODEN_AXE, Items.GOLDEN_AXE);
+        GOLD_UPGRADE.put(Items.WOODEN_HOE, Items.GOLDEN_HOE);
+        GOLD_UPGRADE.put(Items.WOODEN_PICKAXE, Items.GOLDEN_PICKAXE);
+        GOLD_UPGRADE.put(Items.WOODEN_SHOVEL, Items.GOLDEN_SHOVEL);
+        GOLD_UPGRADE.put(Items.WOODEN_SWORD, Items.GOLDEN_SWORD);
+        GOLD_UPGRADE.put(Items.WOODEN_SPEAR, Items.GOLDEN_SPEAR);
+        GOLD_UPGRADE.put(Items.LEATHER_HELMET, Items.GOLDEN_HELMET);
+        GOLD_UPGRADE.put(Items.LEATHER_CHESTPLATE, Items.GOLDEN_CHESTPLATE);
+        GOLD_UPGRADE.put(Items.LEATHER_LEGGINGS, Items.GOLDEN_LEGGINGS);
+        GOLD_UPGRADE.put(Items.LEATHER_BOOTS, Items.GOLDEN_BOOTS);
+        GOLD_UPGRADE.put(Items.LEATHER_HORSE_ARMOR, Items.GOLDEN_HORSE_ARMOR);
+        GOLD_UPGRADE.put(Items.NAUTILUS_SHELL, Items.GOLDEN_NAUTILUS_ARMOR);
+        DIAMOND_UPGRADE.put(Items.IRON_AXE, Items.DIAMOND_AXE);
+        DIAMOND_UPGRADE.put(Items.IRON_HOE, Items.DIAMOND_HOE);
+        DIAMOND_UPGRADE.put(Items.IRON_PICKAXE, Items.DIAMOND_PICKAXE);
+        DIAMOND_UPGRADE.put(Items.IRON_SHOVEL, Items.DIAMOND_SHOVEL);
+        DIAMOND_UPGRADE.put(Items.IRON_SWORD, Items.DIAMOND_SWORD);
+        DIAMOND_UPGRADE.put(Items.IRON_SPEAR, Items.DIAMOND_SPEAR);
+        DIAMOND_UPGRADE.put(Items.IRON_HELMET, Items.DIAMOND_HELMET);
+        DIAMOND_UPGRADE.put(Items.IRON_CHESTPLATE, Items.DIAMOND_CHESTPLATE);
+        DIAMOND_UPGRADE.put(Items.IRON_LEGGINGS, Items.DIAMOND_LEGGINGS);
+        DIAMOND_UPGRADE.put(Items.IRON_BOOTS, Items.DIAMOND_BOOTS);
+        DIAMOND_UPGRADE.put(Items.IRON_HORSE_ARMOR, Items.DIAMOND_HORSE_ARMOR);
+        DIAMOND_UPGRADE.put(Items.IRON_NAUTILUS_ARMOR, Items.DIAMOND_NAUTILUS_ARMOR);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_AXE, Items.NETHERITE_AXE);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_HOE, Items.NETHERITE_HOE);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_PICKAXE, Items.NETHERITE_PICKAXE);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_SHOVEL, Items.NETHERITE_SHOVEL);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_SWORD, Items.NETHERITE_SWORD);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_SPEAR, Items.NETHERITE_SPEAR);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_HELMET, Items.NETHERITE_HELMET);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_CHESTPLATE, Items.NETHERITE_CHESTPLATE);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_LEGGINGS, Items.NETHERITE_LEGGINGS);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_BOOTS, Items.NETHERITE_BOOTS);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_HORSE_ARMOR, Items.NETHERITE_HORSE_ARMOR);
+        NETHERITE_UPGRADE.put(Items.GOLDEN_NAUTILUS_ARMOR, Items.NETHERITE_NAUTILUS_ARMOR);
     }
 
     @Override
@@ -61,13 +88,18 @@ public class Recipes extends FabricRecipeProvider {
             @Override
             public void generate() {
                 //Upgrade template recipes
-                genUpgradeTemplate(RItems.IRON_UPGRADE_TEMPLATE, Items.IRON_INGOT, Blocks.IRON_BLOCK.asItem(), Items.LEATHER);
-                genUpgradeTemplate(RItems.GOLD_UPGRADE_TEMPLATE, Items.GOLD_INGOT, Blocks.GOLD_BLOCK.asItem(), Items.LEATHER);
+                genUpgradeTemplate(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, Items.IRON_INGOT, Blocks.IRON_BLOCK.asItem(), Items.LEATHER);
+                genUpgradeTemplate(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, Items.GOLD_INGOT, Blocks.GOLD_BLOCK.asItem(), Items.LEATHER);
+                genUpgradeTemplate(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, Items.DIAMOND, Blocks.DIAMOND_BLOCK.asItem(), Items.IRON_INGOT);
+                //TODO: Probably change this recipe later
+                genUpgradeTemplate(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK.asItem(), Items.GOLD_INGOT);
 
                 //Upgrade template usages & new recycling
                 mapUpgrades();
-                genSmithing(RItems.IRON_UPGRADE_TEMPLATE, IRON_UPGRADE, net.minecraft.registry.tag.ItemTags.IRON_TOOL_MATERIALS, Items.IRON_INGOT);
-                genSmithing(RItems.GOLD_UPGRADE_TEMPLATE, GOLD_UPGRADE, net.minecraft.registry.tag.ItemTags.GOLD_TOOL_MATERIALS, Items.GOLD_INGOT);
+                genSmithing(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, IRON_UPGRADE, net.minecraft.registry.tag.ItemTags.IRON_TOOL_MATERIALS, Items.IRON_INGOT, true);
+                genSmithing(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, GOLD_UPGRADE, net.minecraft.registry.tag.ItemTags.GOLD_TOOL_MATERIALS, Items.GOLD_INGOT, true);
+                genSmithing(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, DIAMOND_UPGRADE, ItemTags.DIAMOND_TOOL_MATERIALS, Items.DIAMOND, false);
+                genSmithing(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NETHERITE_UPGRADE, ItemTags.NETHERITE_TOOL_MATERIALS, Items.NETHERITE_INGOT, true);
 
                 //Chainmail Armor
                 createShaped(RecipeCategory.TOOLS, Items.CHAINMAIL_HELMET)
@@ -130,16 +162,18 @@ public class Recipes extends FabricRecipeProvider {
                 }
             }
 
-            public void genSmithing(Item template, Map<Item, Item> upgrades, TagKey<Item> material, Item matRep) {
+            public void genSmithing(Item template, Map<Item, Item> upgrades, TagKey<Item> material, Item matRep, boolean reduce) {
                 genSmithing(template, upgrades, material);
 
-                //Reducing back to material
-                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 200)
-                        .criterion("has_material", conditionsFromItem(template))
-                        .offerTo(recipeExporter, getRecipeName(matRep)+"_reduction_from_smelting");
-                CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 100)
-                        .criterion("has_material", conditionsFromItem(template))
-                        .offerTo(recipeExporter, getRecipeName(matRep)+"_reduction_from_blasting");
+                if (reduce) {
+                    //Reducing back to material
+                    CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 200)
+                            .criterion("has_material", conditionsFromItem(template))
+                            .offerTo(recipeExporter, getRecipeName(matRep) + "_reduction_from_smelting");
+                    CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 100)
+                            .criterion("has_material", conditionsFromItem(template))
+                            .offerTo(recipeExporter, getRecipeName(matRep) + "_reduction_from_blasting");
+                }
             }
         };
     }

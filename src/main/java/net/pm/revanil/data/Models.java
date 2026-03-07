@@ -19,7 +19,8 @@ public class Models extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(RItems.IRON_UPGRADE_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
-        itemModelGenerator.register(RItems.GOLD_UPGRADE_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
+        itemModelGenerator.register(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
+        itemModelGenerator.register(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
+        itemModelGenerator.register(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
     }
 }

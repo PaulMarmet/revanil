@@ -12,8 +12,9 @@ import java.util.function.Function;
 
 public class RItems {
 
-    public static final Item IRON_UPGRADE_TEMPLATE = register("iron_upgrade_template", SmithingTemplateItems::createIronUpgrade, new Item.Settings());
-    public static final Item GOLD_UPGRADE_TEMPLATE = register("gold_upgrade_template", SmithingTemplateItems::createGoldUpgrade, new Item.Settings());
+    public static final Item IRON_UPGRADE_SMITHING_TEMPLATE = register("iron_upgrade_smithing_template", SmithingTemplateItems::createIronUpgrade, new Item.Settings());
+    public static final Item GOLD_UPGRADE_SMITHING_TEMPLATE = register("gold_upgrade_smithing_template", SmithingTemplateItems::createGoldUpgrade, new Item.Settings());
+    public static final Item DIAMOND_UPGRADE_SMITHING_TEMPLATE = register("diamond_upgrade_smithing_template", SmithingTemplateItems::createDiamondUpgrade, new Item.Settings());
 
     public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         return register(Identifier.of(Revanil.MOD_ID, name), itemFactory, settings);

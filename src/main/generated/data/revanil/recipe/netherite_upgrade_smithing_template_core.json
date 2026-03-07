@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "minecraft:netherite_upgrade_smithing_template",
+  "key": {
+    "M": "minecraft:netherite_ingot",
+    "O": "minecraft:gold_ingot",
+    "X": "minecraft:netherite_block"
+  },
+  "pattern": [
+    "OMO",
+    "MXM",
+    "OMO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

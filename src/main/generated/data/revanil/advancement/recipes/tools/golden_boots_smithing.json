@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "revanil:gold_upgrade_template"
+            "items": "revanil:gold_upgrade_smithing_template"
           }
         ]
       },

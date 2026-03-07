@@ -17,12 +17,19 @@ public class SmithingTemplateItems {
     private static final Text GOLD_UPGRADE_INGREDIENTS_TEXT;
     private static final Text GOLD_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT;
     private static final Text GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT;
+    private static final Text DIAMOND_UPGRADE_APPLIES_TO_TEXT;
+    private static final Text DIAMOND_UPGRADE_INGREDIENTS_TEXT;
+    private static final Text DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT;
+    private static final Text DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT;
 
     public static SmithingTemplateItem createIronUpgrade(Item.Settings settings) {
         return new SmithingTemplateItem(IRON_UPGRADE_APPLIES_TO_TEXT, IRON_UPGRADE_INGREDIENTS_TEXT, IRON_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT, IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT, getUpgradeEmptyBaseSlotTextures(), getIngotUpgradeEmptyAdditionsSlotTextures(), settings);
     }
     public static SmithingTemplateItem createGoldUpgrade(Item.Settings settings) {
         return new SmithingTemplateItem(GOLD_UPGRADE_APPLIES_TO_TEXT, GOLD_UPGRADE_INGREDIENTS_TEXT, GOLD_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT, GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT, getUpgradeEmptyBaseSlotTextures(), getIngotUpgradeEmptyAdditionsSlotTextures(), settings);
+    }
+    public static SmithingTemplateItem createDiamondUpgrade(Item.Settings settings) {
+        return new SmithingTemplateItem(DIAMOND_UPGRADE_APPLIES_TO_TEXT, DIAMOND_UPGRADE_INGREDIENTS_TEXT, DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT, DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT, getUpgradeEmptyBaseSlotTextures(), getIngotUpgradeEmptyAdditionsSlotTextures(), settings);
     }
 
     private static List<Identifier> getUpgradeEmptyBaseSlotTextures() {
@@ -42,5 +49,9 @@ public class SmithingTemplateItems {
         GOLD_UPGRADE_INGREDIENTS_TEXT = Text.translatable(Lang.GOLD_UPGRADE_INGREDIENTS).formatted(SmithingTemplateItem.DESCRIPTION_FORMATTING);
         GOLD_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(Lang.GOLD_UPGRADE_BASE_SLOT_DESCRIPTION);
         GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(Lang.GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION);
+        DIAMOND_UPGRADE_APPLIES_TO_TEXT = Text.translatable(Lang.DIAMOND_UPGRADE_APPLIES_TO).formatted(SmithingTemplateItem.DESCRIPTION_FORMATTING);
+        DIAMOND_UPGRADE_INGREDIENTS_TEXT = Text.translatable(Lang.DIAMOND_UPGRADE_INGREDIENTS).formatted(SmithingTemplateItem.DESCRIPTION_FORMATTING);
+        DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(Lang.DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION);
+        DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(Lang.DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION);
     }
 }

@@ -9,7 +9,7 @@ public class Material {
         public static int CHAIN = 8;
         public static int IRON = 8;
         public static int GOLD = 4;
-        public static int DIAMOND = 16;
+        public static int DIAMOND = 20;
         public static int NETHERITE = 32;
         public static int TURTLE = 8;
         public static int ARMADILLO = 4;
@@ -17,10 +17,10 @@ public class Material {
     public static class Defense {
         public static int LEATHER = 1;
         public static int COPPER = 2;
-        public static int CHAIN = 2;
-        public static int IRON = 3;
-        public static int GOLD = 2;
-        public static int DIAMOND = 4;
+        public static int CHAIN = 3;
+        public static int IRON = 4;
+        public static int GOLD = 3;
+        public static int DIAMOND = 5;
         public static int NETHERITE = 4;
         public static int TURTLE = 3;
         public static int ARMADILLO = 2;

@@ -17,17 +17,6 @@ public class JsonDataLoaderMixin {
     private static LinkedHashSet<Identifier> banned = new LinkedHashSet<>();
 
     static {
-        banRecipe("golden_axe");
-        banRecipe("golden_hoe");
-        banRecipe("golden_pickaxe");
-        banRecipe("golden_shovel");
-        banRecipe("golden_sword");
-        banRecipe("golden_spear");
-        banRecipe("golden_helmet");
-        banRecipe("golden_chestplate");
-        banRecipe("golden_leggings");
-        banRecipe("golden_boots");
-        banRecipe("golden_horse_armor");
         banRecipe("iron_axe");
         banRecipe("iron_hoe");
         banRecipe("iron_pickaxe");
@@ -41,8 +30,42 @@ public class JsonDataLoaderMixin {
         banRecipe("iron_horse_armor");
         banRecipe("iron_nugget_from_smelting");
         banRecipe("iron_nugget_from_blasting");
+        banRecipe("golden_axe");
+        banRecipe("golden_hoe");
+        banRecipe("golden_pickaxe");
+        banRecipe("golden_shovel");
+        banRecipe("golden_sword");
+        banRecipe("golden_spear");
+        banRecipe("golden_helmet");
+        banRecipe("golden_chestplate");
+        banRecipe("golden_leggings");
+        banRecipe("golden_boots");
+        banRecipe("golden_horse_armor");
         banRecipe("gold_nugget_from_smelting");
         banRecipe("gold_nugget_from_blasting");
+        banRecipe("diamond_axe");
+        banRecipe("diamond_hoe");
+        banRecipe("diamond_pickaxe");
+        banRecipe("diamond_shovel");
+        banRecipe("diamond_sword");
+        banRecipe("diamond_spear");
+        banRecipe("diamond_helmet");
+        banRecipe("diamond_chestplate");
+        banRecipe("diamond_leggings");
+        banRecipe("diamond_boots");
+        banRecipe("netherite_upgrade_smithing_template");
+        banRecipe("netherite_axe_smithing");
+        banRecipe("netherite_hoe_smithing");
+        banRecipe("netherite_pickaxe_smithing");
+        banRecipe("netherite_shovel_smithing");
+        banRecipe("netherite_sword_smithing");
+        banRecipe("netherite_spear_smithing");
+        banRecipe("netherite_helmet_smithing");
+        banRecipe("netherite_chestplate_smithing");
+        banRecipe("netherite_leggings_smithing");
+        banRecipe("netherite_boots_smithing");
+        banRecipe("netherite_horse_armor_smithing");
+        banRecipe("netherite_nautilus_armor_smithing");
     }
 
     @Unique

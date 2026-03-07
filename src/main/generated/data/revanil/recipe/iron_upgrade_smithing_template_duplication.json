@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "group": "revanil:iron_upgrade_template",
+  "group": "revanil:iron_upgrade_smithing_template",
   "key": {
     "M": "minecraft:iron_ingot",
     "O": "minecraft:leather",
-    "X": "minecraft:iron_block"
+    "X": "revanil:iron_upgrade_smithing_template"
   },
   "pattern": [
     "OMO",
@@ -13,7 +13,7 @@
     "OMO"
   ],
   "result": {
-    "count": 1,
-    "id": "revanil:iron_upgrade_template"
+    "count": 2,
+    "id": "revanil:iron_upgrade_smithing_template"
   }
 }

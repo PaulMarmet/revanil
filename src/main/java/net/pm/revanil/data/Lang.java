@@ -18,6 +18,10 @@ public class Lang extends FabricLanguageProvider {
     public static final String GOLD_UPGRADE_APPLIES_TO = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.applies_to";
     public static final String GOLD_UPGRADE_BASE_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.base_slot_description";
     public static final String GOLD_UPGRADE_INGREDIENTS = "item."+ Revanil.MOD_ID+".smithing_template.gold_upgrade.ingredients";
+    public static final String DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.additions_slot_description";
+    public static final String DIAMOND_UPGRADE_APPLIES_TO = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.applies_to";
+    public static final String DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.base_slot_description";
+    public static final String DIAMOND_UPGRADE_INGREDIENTS = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.ingredients";
 
     public Lang(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, "en_us", registryLookup);
@@ -25,17 +29,23 @@ public class Lang extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add(RItems.IRON_UPGRADE_TEMPLATE, "Iron Upgrade Template");
+        translationBuilder.add(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, "Iron Upgrade");
         translationBuilder.add(IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, "Add Iron Ingot");
         translationBuilder.add(IRON_UPGRADE_APPLIES_TO, "Leather or Wooden Equipment");
         translationBuilder.add(IRON_UPGRADE_BASE_SLOT_DESCRIPTION, "Add leather armor, wooden weapon, or tool");
         translationBuilder.add(IRON_UPGRADE_INGREDIENTS, "Iron Ingot");
 
-        translationBuilder.add(RItems.GOLD_UPGRADE_TEMPLATE, "Gold Upgrade Template");
+        translationBuilder.add(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, "Gold Upgrade");
         translationBuilder.add(GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, "Add Gold Ingot");
         translationBuilder.add(GOLD_UPGRADE_APPLIES_TO, "Leather or Wooden Equipment");
         translationBuilder.add(GOLD_UPGRADE_BASE_SLOT_DESCRIPTION, "Add leather armor, wooden weapon, or tool");
         translationBuilder.add(GOLD_UPGRADE_INGREDIENTS, "Gold Ingot");
+
+        translationBuilder.add(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, "Diamond Upgrade");
+        translationBuilder.add(DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, "Add Diamond");
+        translationBuilder.add(DIAMOND_UPGRADE_APPLIES_TO, "Iron Equipment");
+        translationBuilder.add(DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION, "Add diamond armor, weapon, or tool");
+        translationBuilder.add(DIAMOND_UPGRADE_INGREDIENTS, "Diamond");
     }
 
     public void addBlockWithItem(TranslationBuilder translationBuilder, Block block, String name) {

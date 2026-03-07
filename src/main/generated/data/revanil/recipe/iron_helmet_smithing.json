@@ -5,5 +5,5 @@
   "result": {
     "id": "minecraft:iron_helmet"
   },
-  "template": "revanil:iron_upgrade_template"
+  "template": "revanil:iron_upgrade_smithing_template"
 }

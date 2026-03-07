@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:diamond_tool_materials",
+  "base": "minecraft:iron_nautilus_armor",
+  "result": {
+    "id": "minecraft:diamond_nautilus_armor"
+  },
+  "template": "revanil:diamond_upgrade_smithing_template"
+}

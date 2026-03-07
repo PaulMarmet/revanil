@@ -1,6 +1,11 @@
 {
-  "item.revanil.gold_upgrade_template": "Gold Upgrade Template",
-  "item.revanil.iron_upgrade_template": "Iron Upgrade Template",
+  "item.revanil.diamond_upgrade_smithing_template": "Diamond Upgrade",
+  "item.revanil.gold_upgrade_smithing_template": "Gold Upgrade",
+  "item.revanil.iron_upgrade_smithing_template": "Iron Upgrade",
+  "item.revanil.smithing_template.diamond_upgrade.additions_slot_description": "Add Diamond",
+  "item.revanil.smithing_template.diamond_upgrade.applies_to": "Iron Equipment",
+  "item.revanil.smithing_template.diamond_upgrade.base_slot_description": "Add diamond armor, weapon, or tool",
+  "item.revanil.smithing_template.diamond_upgrade.ingredients": "Diamond",
   "item.revanil.smithing_template.gold_upgrade.additions_slot_description": "Add Gold Ingot",
   "item.revanil.smithing_template.gold_upgrade.applies_to": "Leather or Wooden Equipment",
   "item.revanil.smithing_template.gold_upgrade.base_slot_description": "Add leather armor, wooden weapon, or tool",

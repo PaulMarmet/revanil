@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "revanil:diamond_upgrade_smithing_template",
+  "key": {
+    "M": "minecraft:diamond",
+    "O": "minecraft:iron_ingot",
+    "X": "minecraft:diamond_block"
+  },
+  "pattern": [
+    "OMO",
+    "MXM",
+    "OMO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "revanil:diamond_upgrade_smithing_template"
+  }
+}
