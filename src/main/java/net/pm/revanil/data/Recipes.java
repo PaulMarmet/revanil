@@ -2,19 +2,19 @@ package net.pm.revanil.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.recipe.CookingRecipeJsonBuilder;
-import net.minecraft.data.recipe.RecipeExporter;
-import net.minecraft.data.recipe.RecipeGenerator;
-import net.minecraft.data.recipe.SmithingTransformRecipeJsonBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.pm.revanil.Revanil;
 import net.pm.revanil.item.RItems;
 
@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class Recipes extends FabricRecipeProvider {
-    public Recipes(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public Recipes(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
@@ -83,10 +83,10 @@ public class Recipes extends FabricRecipeProvider {
     }
 
     @Override
-    protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
-        return new RecipeGenerator(wrapperLookup, recipeExporter) {
+    protected RecipeProvider createRecipeProvider(HolderLookup.Provider wrapperLookup, RecipeOutput recipeExporter) {
+        return new RecipeProvider(wrapperLookup, recipeExporter) {
             @Override
-            public void generate() {
+            public void buildRecipes() {
                 //Upgrade template recipes
                 genUpgradeTemplate(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, Items.IRON_INGOT, Blocks.IRON_BLOCK.asItem(), Items.LEATHER);
                 genUpgradeTemplate(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, Items.GOLD_INGOT, Blocks.GOLD_BLOCK.asItem(), Items.LEATHER);
@@ -96,69 +96,69 @@ public class Recipes extends FabricRecipeProvider {
 
                 //Upgrade template usages & new recycling
                 mapUpgrades();
-                genSmithing(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, IRON_UPGRADE, net.minecraft.registry.tag.ItemTags.IRON_TOOL_MATERIALS, Items.IRON_INGOT, true);
-                genSmithing(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, GOLD_UPGRADE, net.minecraft.registry.tag.ItemTags.GOLD_TOOL_MATERIALS, Items.GOLD_INGOT, true);
+                genSmithing(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, IRON_UPGRADE, net.minecraft.tags.ItemTags.IRON_TOOL_MATERIALS, Items.IRON_INGOT, true);
+                genSmithing(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, GOLD_UPGRADE, net.minecraft.tags.ItemTags.GOLD_TOOL_MATERIALS, Items.GOLD_INGOT, true);
                 genSmithing(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, DIAMOND_UPGRADE, ItemTags.DIAMOND_TOOL_MATERIALS, Items.DIAMOND, false);
                 genSmithing(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NETHERITE_UPGRADE, ItemTags.NETHERITE_TOOL_MATERIALS, Items.NETHERITE_INGOT, true);
 
                 //Chainmail Armor
-                createShaped(RecipeCategory.TOOLS, Items.CHAINMAIL_HELMET)
+                shaped(RecipeCategory.TOOLS, Items.CHAINMAIL_HELMET)
                         .pattern("###")
                         .pattern("# #")
-                        .input('#', Items.IRON_CHAIN)
-                        .criterion("has_material", conditionsFromItem(Items.IRON_INGOT))
-                        .offerTo(recipeExporter);
-                createShaped(RecipeCategory.TOOLS, Items.CHAINMAIL_CHESTPLATE)
+                        .define('#', Items.IRON_CHAIN)
+                        .unlockedBy("has_material", has(Items.IRON_INGOT))
+                        .save(recipeExporter);
+                shaped(RecipeCategory.TOOLS, Items.CHAINMAIL_CHESTPLATE)
                         .pattern("# #")
                         .pattern("###")
                         .pattern("###")
-                        .input('#', Items.IRON_CHAIN)
-                        .criterion("has_material", conditionsFromItem(Items.IRON_INGOT))
-                        .offerTo(recipeExporter);
-                createShaped(RecipeCategory.TOOLS, Items.CHAINMAIL_LEGGINGS)
+                        .define('#', Items.IRON_CHAIN)
+                        .unlockedBy("has_material", has(Items.IRON_INGOT))
+                        .save(recipeExporter);
+                shaped(RecipeCategory.TOOLS, Items.CHAINMAIL_LEGGINGS)
                         .pattern("###")
                         .pattern("# #")
                         .pattern("# #")
-                        .input('#', Items.IRON_CHAIN)
-                        .criterion("has_material", conditionsFromItem(Items.IRON_INGOT))
-                        .offerTo(recipeExporter);
-                createShaped(RecipeCategory.TOOLS, Items.CHAINMAIL_BOOTS)
+                        .define('#', Items.IRON_CHAIN)
+                        .unlockedBy("has_material", has(Items.IRON_INGOT))
+                        .save(recipeExporter);
+                shaped(RecipeCategory.TOOLS, Items.CHAINMAIL_BOOTS)
                         .pattern("# #")
                         .pattern("# #")
-                        .input('#', Items.IRON_CHAIN)
-                        .criterion("has_material", conditionsFromItem(Items.IRON_INGOT))
-                        .offerTo(recipeExporter);
+                        .define('#', Items.IRON_CHAIN)
+                        .unlockedBy("has_material", has(Items.IRON_INGOT))
+                        .save(recipeExporter);
             }
 
             public void genUpgradeTemplate(Item template, Item material, Item core, Item other) {
-                createShaped(RecipeCategory.TOOLS, template)
+                shaped(RecipeCategory.TOOLS, template)
                         .pattern("OMO")
                         .pattern("MXM")
                         .pattern("OMO")
-                        .input('O', other)
-                        .input('M', material)
-                        .input('X', core)
-                        .group(Registries.ITEM.getId(template.asItem()).toString())
-                        .criterion("has_material", conditionsFromItem(material))
-                        .offerTo(recipeExporter, getRecipeName(template)+"_core");
-                createShaped(RecipeCategory.TOOLS, template, 2)
+                        .define('O', other)
+                        .define('M', material)
+                        .define('X', core)
+                        .group(BuiltInRegistries.ITEM.getKey(template.asItem()).toString())
+                        .unlockedBy("has_material", has(material))
+                        .save(recipeExporter, getSimpleRecipeName(template)+"_core");
+                shaped(RecipeCategory.TOOLS, template, 2)
                         .pattern("OMO")
                         .pattern("MXM")
                         .pattern("OMO")
-                        .input('O', other)
-                        .input('M', material)
-                        .input('X', template)
-                        .group(Registries.ITEM.getId(template.asItem()).toString())
-                        .criterion("has_material", conditionsFromItem(material))
-                        .offerTo(recipeExporter, getRecipeName(template)+"_duplication");
+                        .define('O', other)
+                        .define('M', material)
+                        .define('X', template)
+                        .group(BuiltInRegistries.ITEM.getKey(template.asItem()).toString())
+                        .unlockedBy("has_material", has(material))
+                        .save(recipeExporter, getSimpleRecipeName(template)+"_duplication");
             }
 
             public void genSmithing(Item template, Map<Item, Item> upgrades, TagKey<Item> material) {
                 //Create the smithing recipe for each item.
                 for (Item key : upgrades.keySet()) {
-                    SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItem(template), Ingredient.ofItem(key), ingredientFromTag(material), RecipeCategory.TOOLS, upgrades.get(key))
-                            .criterion("has_template", conditionsFromItem(template))
-                            .offerTo(recipeExporter, getRecipeName(upgrades.get(key))+"_smithing");
+                    SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(key), tag(material), RecipeCategory.TOOLS, upgrades.get(key))
+                            .unlocks("has_template", has(template))
+                            .save(recipeExporter, getSimpleRecipeName(upgrades.get(key))+"_smithing");
                 }
             }
 
@@ -167,12 +167,12 @@ public class Recipes extends FabricRecipeProvider {
 
                 if (reduce) {
                     //Reducing back to material
-                    CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 200)
-                            .criterion("has_material", conditionsFromItem(template))
-                            .offerTo(recipeExporter, getRecipeName(matRep) + "_reduction_from_smelting");
-                    CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 100)
-                            .criterion("has_material", conditionsFromItem(template))
-                            .offerTo(recipeExporter, getRecipeName(matRep) + "_reduction_from_blasting");
+                    SimpleCookingRecipeBuilder.smelting(Ingredient.of(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 200)
+                            .unlockedBy("has_material", has(template))
+                            .save(recipeExporter, getSimpleRecipeName(matRep) + "_reduction_from_smelting");
+                    SimpleCookingRecipeBuilder.blasting(Ingredient.of(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 100)
+                            .unlockedBy("has_material", has(template))
+                            .save(recipeExporter, getSimpleRecipeName(matRep) + "_reduction_from_blasting");
                 }
             }
         };

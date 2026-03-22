@@ -6,7 +6,7 @@
     "ArmorMaterialsMixin",
     "BedBlockMixin",
     "BedRuleMixin",
-    "EquipmentTypeMixin",
+    "ArmorTypeMixin",
     "JsonDataLoaderMixin",
     "PlayerEntityMixin",
     "RespawnAnchorBlockMixin",

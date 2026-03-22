@@ -1,21 +1,21 @@
 package net.pm.revanil.mixin;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.attribute.BedRule;
 import net.minecraft.world.attribute.EnvironmentAttributes;
+import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(PlayerEntity.class)
+@Mixin(Player.class)
 public class PlayerEntityMixin {
-    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSleeping()Z", shift = At.Shift.AFTER))
+    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;isSleeping()Z", shift = At.Shift.AFTER))
     private void revanil$preventTotalSleep(CallbackInfo ci) {
-        if (((PlayerEntity)(Object)this).sleepTimer > 90 &&
-                ((PlayerEntity)(Object)this).isSleeping() &&
-                ((PlayerEntity)(Object)this).getEntityWorld().getEnvironmentAttributes().getAttributeValue(EnvironmentAttributes.BED_RULE_GAMEPLAY, ((PlayerEntity)(Object)this).getEntityPos()).canSleep() == BedRule.Condition.NEVER) {
-            ((PlayerEntity)(Object)this).sleepTimer = 80;
+        if (((Player)(Object)this).sleepCounter > 90 &&
+                ((Player)(Object)this).isSleeping() &&
+                ((Player)(Object)this).level().environmentAttributes().getValue(EnvironmentAttributes.BED_RULE, ((Player)(Object)this).position()).canSleep() == BedRule.Rule.NEVER) {
+            ((Player)(Object)this).sleepCounter = 80;
         }
     }
 }

@@ -2,16 +2,16 @@ package net.pm.revanil.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.resource.JsonDataLoader;
-import net.minecraft.resource.Resource;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.*;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 
-@Mixin(JsonDataLoader.class)
+@Mixin(SimpleJsonResourceReloadListener.class)
 public class JsonDataLoaderMixin {
     @Unique
     private static LinkedHashSet<Identifier> banned = new LinkedHashSet<>();
@@ -74,10 +74,10 @@ public class JsonDataLoaderMixin {
     }
     @Unique
     private static void banRecipe(String namespace, String name) {
-        banned.add(Identifier.of(namespace, "recipe/" + name + ".json"));
+        banned.add(Identifier.fromNamespaceAndPath(namespace, "recipe/" + name + ".json"));
     }
 
-    @WrapOperation(method = "load(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/resource/ResourceFinder;Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/Codec;Ljava/util/Map;)V", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;"))
+    @WrapOperation(method = "scanDirectory(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/FileToIdConverter;Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/Codec;Ljava/util/Map;)V", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;"))
     private static <E> E revanil$makeSkip(Iterator<E> instance, Operation<E> original) {
         E next = original.call(instance);
         while (banned.contains(((Map.Entry<Identifier, Resource>) next).getKey())) {

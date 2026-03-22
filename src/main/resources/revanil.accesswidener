@@ -1,15 +1,15 @@
 accessWidener v2 named
 
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_ARMOR_SLOT_HELMET_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_ARMOR_SLOT_BOOTS_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_SLOT_PICKAXE_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_SLOT_SWORD_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_SLOT_AXE_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_SLOT_SHOVEL_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_SLOT_HOE_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem EMPTY_SLOT_INGOT_TEXTURE Lnet/minecraft/util/Identifier;
-accessible field net/minecraft/item/SmithingTemplateItem DESCRIPTION_FORMATTING Lnet/minecraft/util/Formatting;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HELMET Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_CHESTPLATE Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_LEGGINGS Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_BOOTS Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_PICKAXE Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_SWORD Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_AXE Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_SHOVEL Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HOE Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_INGOT Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/world/item/SmithingTemplateItem DESCRIPTION_FORMAT Lnet/minecraft/ChatFormatting;
 
-accessible field net/minecraft/entity/player/PlayerEntity sleepTimer I
+accessible field net/minecraft/world/entity/player/Player sleepCounter I

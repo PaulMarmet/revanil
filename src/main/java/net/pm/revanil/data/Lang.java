@@ -2,8 +2,8 @@ package net.pm.revanil.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.block.Block;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.world.level.block.Block;
 import net.pm.revanil.Revanil;
 import net.pm.revanil.item.RItems;
 
@@ -23,12 +23,12 @@ public class Lang extends FabricLanguageProvider {
     public static final String DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.base_slot_description";
     public static final String DIAMOND_UPGRADE_INGREDIENTS = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.ingredients";
 
-    public Lang(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    public Lang(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, "en_us", registryLookup);
     }
 
     @Override
-    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, "Iron Upgrade");
         translationBuilder.add(IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, "Add Iron Ingot");
         translationBuilder.add(IRON_UPGRADE_APPLIES_TO, "Leather or Wooden Equipment");
@@ -46,6 +46,8 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add(DIAMOND_UPGRADE_APPLIES_TO, "Iron Equipment");
         translationBuilder.add(DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION, "Add diamond armor, weapon, or tool");
         translationBuilder.add(DIAMOND_UPGRADE_INGREDIENTS, "Diamond");
+
+        translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.applies_to", "Gold Equipment");
     }
 
     public void addBlockWithItem(TranslationBuilder translationBuilder, Block block, String name) {

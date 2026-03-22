@@ -2,8 +2,8 @@ package net.pm.revanil.data;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.BlockStateModelGenerator;
-import net.minecraft.client.data.ItemModelGenerator;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
 import net.pm.revanil.item.RItems;
 
 public class Models extends FabricModelProvider {
@@ -13,14 +13,14 @@ public class Models extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+    public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
 
     }
 
     @Override
-    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
-        itemModelGenerator.register(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
-        itemModelGenerator.register(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.Models.GENERATED);
+    public void generateItemModels(ItemModelGenerators itemModelGenerator) {
+        itemModelGenerator.generateFlatItem(RItems.IRON_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM);
     }
 }

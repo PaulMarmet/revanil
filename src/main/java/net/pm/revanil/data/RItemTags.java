@@ -2,24 +2,23 @@ package net.pm.revanil.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.Identifier;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.ItemLike;
 import java.util.concurrent.CompletableFuture;
 
 public class RItemTags extends FabricTagProvider.ItemTagProvider {
-    public RItemTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public RItemTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+    protected void addTags(HolderLookup.Provider wrapperLookup) {
 
     }
 
-    public Identifier id(ItemConvertible item) {
-        return Registries.ITEM.getId(item.asItem());
+    public Identifier id(ItemLike item) {
+        return BuiltInRegistries.ITEM.getKey(item.asItem());
     }
 }
