@@ -24,5 +24,6 @@ public class RevanilDataGenerator implements DataGeneratorEntrypoint {
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder) {
         registryBuilder.add(LithostitchedRegistries.WORLDGEN_MODIFIER, RLithoSurface::bootstrap);
+        registryBuilder.add(LithostitchedRegistries.WORLDGEN_MODIFIER, RLithoRemove::bootstrap);
     }
 }
