@@ -180,6 +180,6 @@ public class Recipes extends FabricRecipeProvider {
 
     @Override
     public String getName() {
-        return Revanil.MOD_ID;
+        return Revanil.MOD_ID+"_recipes";
     }
 }

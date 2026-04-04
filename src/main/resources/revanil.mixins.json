@@ -4,13 +4,15 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "ArmorMaterialsMixin",
+    "ArmorTypeMixin",
     "BedBlockMixin",
     "BedRuleMixin",
-    "ArmorTypeMixin",
     "JsonDataLoaderMixin",
     "PlayerEntityMixin",
     "RespawnAnchorBlockMixin",
-    "ToolMaterialsMixin"
+    "ToolMaterialsMixin",
+    "surfaceRules.ConditionSourceMixin",
+    "surfaceRules.VerticalGradientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
