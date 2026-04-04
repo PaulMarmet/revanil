@@ -11,11 +11,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.pm.revanil.Revanil;
 import net.pm.revanil.world.level.levelgen.RSurfaceRules;
 
 public class RLithoSurface {
-    public static ResourceKey<WorldgenModifier> overworld_modif = ResourceKey.create(LithostitchedRegistries.WORLDGEN_MODIFIER, Identifier.fromNamespaceAndPath(Revanil.MOD_ID, "overworld_modif"));
+    public static ResourceKey<WorldgenModifier> shallow_seams = ResourceKey.create(LithostitchedRegistries.WORLDGEN_MODIFIER, Identifier.fromNamespaceAndPath(Revanil.MOD_ID, "shallow_seams"));
+    public static ResourceKey<WorldgenModifier> deep_seams = ResourceKey.create(LithostitchedRegistries.WORLDGEN_MODIFIER, Identifier.fromNamespaceAndPath(Revanil.MOD_ID, "deep_seams"));
     
     private static final SurfaceRules.RuleSource
             AIR = makeStateRule(Blocks.AIR);
@@ -88,7 +90,6 @@ public class RLithoSurface {
     private static final SurfaceRules.RuleSource
             ENDSTONE = makeStateRule(Blocks.END_STONE);
 
-    //My blocks added
     private static final SurfaceRules.RuleSource
             ANDESITE = makeStateRule(Blocks.ANDESITE);
     private static final SurfaceRules.RuleSource
@@ -117,10 +118,7 @@ public class RLithoSurface {
     }
 
     public static void bootstrap(BootstrapContext<WorldgenModifier> context) {
-        WorldgenModifier.ModifierBuilder builder = WorldgenModifier.builder();
 
-        //My stuff here.
-        // https://github.com/Apollounknowndev/lithostitched/wiki/Worldgen-Modifier-Types#add_surface_rule
         //Base stone replacements
         SurfaceRules.RuleSource stoneBiomeR = SurfaceRules.sequence(
                 //Dripstone Biomes
@@ -130,8 +128,28 @@ public class RLithoSurface {
                 //Red Sandstone Biomes
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(), RED_SANDSTONE)
         );
-        //Alternate stone selection
-        SurfaceRules.RuleSource altStoneBiomeR = SurfaceRules.sequence(
+
+        SurfaceRules.RuleSource shallowSeams = SurfaceRules.sequence(
+                shallowStoneSeams(),
+                shallowSoilSeams()
+        );
+        //Deep seams only where deepslate will be
+        SurfaceRules.RuleSource deepSeams = SurfaceRules.ifTrue(
+                SurfaceRules.verticalGradient(
+                        "deep_seams",
+                        VerticalAnchor.absolute(0),
+                        VerticalAnchor.absolute(8)),
+                deepStoneSeams());
+
+        context.register(shallow_seams,
+                WorldgenModifier.builder().appendSurfaceRule(LevelStem.OVERWORLD, shallowSeams));
+
+        context.register(deep_seams,
+                WorldgenModifier.builder().prependSurfaceRule(LevelStem.OVERWORLD, deepSeams));
+    }
+
+    private static SurfaceRules.RuleSource shallowStoneSeams() {
+        SurfaceRules.RuleSource altForBiome = SurfaceRules.sequence(
                 //Blackstone Biomes
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(
                         Biomes.BASALT_DELTAS,
@@ -221,32 +239,16 @@ public class RLithoSurface {
                         Biomes.WINDSWEPT_HILLS
                 ), DIORITE)
         );
-        SurfaceRules.RuleSource altDeepslateBiomeR = SurfaceRules.sequence(
-                //Smooth Basalt Biomes
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(
-                        Biomes.CHERRY_GROVE,
-                        Biomes.FROZEN_PEAKS,
-                        Biomes.GROVE,
-                        Biomes.JAGGED_PEAKS,
-                        Biomes.STONY_PEAKS
-                ), SMOOTH_BASALT),
-                //Obsidian Biomes
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(
-                        Biomes.BASALT_DELTAS,
-                        Biomes.CRIMSON_FOREST,
-                        Biomes.END_BARRENS,
-                        Biomes.END_HIGHLANDS,
-                        Biomes.END_MIDLANDS,
-                        Biomes.NETHER_WASTES,
-                        Biomes.SMALL_END_ISLANDS,
-                        Biomes.SOUL_SAND_VALLEY,
-                        Biomes.THE_END,
-                        Biomes.WARPED_FOREST
-                ), OBSIDIAN),
-                //Default
-                TUFF
+
+        return SurfaceRules.sequence(
+                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, -0.0125, 0.0125), altForBiome),
+                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, -0.525, -0.5), altForBiome),
+                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, 0.5, 0.525), altForBiome)
         );
-        SurfaceRules.RuleSource altSoilSeamsBiomeR = SurfaceRules.sequence(
+    }
+
+    private static SurfaceRules.RuleSource shallowSoilSeams() {
+        SurfaceRules.RuleSource altForBiome = SurfaceRules.sequence(
                 //Air Biomes
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(
                         Biomes.END_BARRENS,
@@ -306,28 +308,39 @@ public class RLithoSurface {
                 GRAVEL
         );
 
-        //Alternate stone application rules.
-        SurfaceRules.RuleSource altStoneR = SurfaceRules.sequence(
-                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, -0.0125, 0.0125), altStoneBiomeR),
-                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, -0.525, -0.5), altStoneBiomeR),
-                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, 0.5, 0.525), altStoneBiomeR)
-        );
-        SurfaceRules.RuleSource altDeepslateR = SurfaceRules.sequence(
-                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, -0.425, -0.4), altDeepslateBiomeR),
-                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, 0.4, 0.425), altDeepslateBiomeR)
-        );
-        //Soil Veins, to replace the dirt and gravel pockets
-        SurfaceRules.RuleSource altSoilR = SurfaceRules.sequence(
-                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.GRAVEL, -0.02, 0.02), altSoilSeamsBiomeR)
+        return SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.GRAVEL, -0.02, 0.02), altForBiome);
+    }
+
+    private static SurfaceRules.RuleSource deepStoneSeams() {
+        SurfaceRules.RuleSource altForBiome = SurfaceRules.sequence(
+                //Smooth Basalt Biomes
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(
+                        Biomes.CHERRY_GROVE,
+                        Biomes.FROZEN_PEAKS,
+                        Biomes.GROVE,
+                        Biomes.JAGGED_PEAKS,
+                        Biomes.STONY_PEAKS
+                ), SMOOTH_BASALT),
+                //Obsidian Biomes
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(
+                        Biomes.BASALT_DELTAS,
+                        Biomes.CRIMSON_FOREST,
+                        Biomes.END_BARRENS,
+                        Biomes.END_HIGHLANDS,
+                        Biomes.END_MIDLANDS,
+                        Biomes.NETHER_WASTES,
+                        Biomes.SMALL_END_ISLANDS,
+                        Biomes.SOUL_SAND_VALLEY,
+                        Biomes.THE_END,
+                        Biomes.WARPED_FOREST
+                ), OBSIDIAN),
+                //Default
+                TUFF
         );
 
-        SurfaceRules.RuleSource alts = SurfaceRules.sequence(
-                altSoilR,
-                altStoneR,
-                altDeepslateR
+        return SurfaceRules.sequence(
+                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, -0.425, -0.4), altForBiome),
+                SurfaceRules.ifTrue(RSurfaceRules.noise3dCondition(Noises.CALCITE, 0.4, 0.425), altForBiome)
         );
-
-        context.register(overworld_modif,
-                builder.appendSurfaceRule(LevelStem.OVERWORLD, alts));
     }
 }
