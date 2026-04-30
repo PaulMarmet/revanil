@@ -2,8 +2,9 @@ package net.pm.revanil;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.pm.revanil.item.RItemGroups;
-import net.pm.revanil.item.RItems;
+import net.pm.revanil.client.particle.RParticles;
+import net.pm.revanil.world.item.RItemGroups;
+import net.pm.revanil.world.item.RItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,5 +16,6 @@ public class Revanil implements ModInitializer {
 	public void onInitialize() {
 		RItems.init();
 		RItemGroups.init();
+		RParticles.init();
 	}
 }

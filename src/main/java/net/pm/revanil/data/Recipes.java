@@ -16,7 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.pm.revanil.Revanil;
-import net.pm.revanil.item.RItems;
+import net.pm.revanil.world.item.RItems;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

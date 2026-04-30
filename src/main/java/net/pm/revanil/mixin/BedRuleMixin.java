@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(BedRule.class)
 public class BedRuleMixin {
-
     @WrapMethod(method = "canSleep(Lnet/minecraft/world/level/Level;)Z")
     private boolean revanil$neverAlwaysSwitch(Level world, Operation<Boolean> original) {
         return original.call(world) || BedRule.Rule.NEVER == ((BedRule)(Object)this).canSleep();

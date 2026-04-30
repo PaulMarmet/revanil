@@ -1,4 +1,4 @@
-package net.pm.revanil.item;
+package net.pm.revanil.world.item;
 
 public class Material {
     public static class Durability {

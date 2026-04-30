@@ -1,4 +1,4 @@
-package net.pm.revanil.item;
+package net.pm.revanil.world.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.item.CreativeModeTabs;

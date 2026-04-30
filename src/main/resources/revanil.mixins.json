@@ -7,10 +7,23 @@
     "ArmorTypeMixin",
     "BedBlockMixin",
     "BedRuleMixin",
+    "BlockBehaviourMixin",
+    "BlocksMixin",
+    "BundleContentsMixin",
+    "CaveVinesPlantBlockMixin",
+    "FarmBlockMixin",
+    "FireChargeItemMixin",
+    "IceBlockMixin",
+    "ItemEntityMixin",
+    "ItemMixin",
+    "ItemsMixin",
     "JsonDataLoaderMixin",
-    "PlayerEntityMixin",
+    "PlayerMixin",
     "RespawnAnchorBlockMixin",
+    "SnowLayerBlockMixin",
+    "SweetBerryBushBlockMixin",
     "ToolMaterialsMixin",
+    "WeatheringCopperGrateBlockMixin",
     "surfaceRules.ConditionSourceMixin",
     "surfaceRules.VerticalGradientMixin"
   ],
@@ -19,5 +32,8 @@
   },
   "overwrites": {
     "requireAnnotations": true
-	}
+  },
+  "client": [
+    "MinecraftMixin"
+  ]
 }

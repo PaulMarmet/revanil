@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.Block;
 import net.pm.revanil.Revanil;
-import net.pm.revanil.item.RItems;
+import net.pm.revanil.world.item.RItems;
 
 import java.util.concurrent.CompletableFuture;
 

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Player.class)
-public class PlayerEntityMixin {
+public class PlayerMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;isSleeping()Z", shift = At.Shift.AFTER))
     private void revanil$preventTotalSleep(CallbackInfo ci) {
         if (((Player)(Object)this).sleepCounter > 90 &&

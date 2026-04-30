@@ -1,4 +1,4 @@
-package net.pm.revanil.item;
+package net.pm.revanil.world.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
