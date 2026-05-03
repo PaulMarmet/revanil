@@ -34,4 +34,9 @@ public class ItemsMixin {
     private static Item.Properties revanil$glowBerriesEffect(Item.Properties instance, FoodProperties foodProperties, Operation<Item.Properties> original) {
         return instance.food(foodProperties, RConsumables.GLOW_BERRIES);
     }
+
+    @WrapOperation(method = "<clinit>", slice = @Slice(from = @At(value="CONSTANT", args="stringValue=golden_carrot", ordinal = 0)), at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;food(Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/Item$Properties;", ordinal = 0))
+    private static Item.Properties revanil$goldenCarrotEffect(Item.Properties instance, FoodProperties foodProperties, Operation<Item.Properties> original) {
+        return instance.food(foodProperties, RConsumables.GOLDEN_CARROT);
+    }
 }

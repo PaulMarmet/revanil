@@ -92,7 +92,7 @@ public class Recipes extends FabricRecipeProvider {
                 genUpgradeTemplate(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, Items.GOLD_INGOT, Blocks.GOLD_BLOCK.asItem(), Items.LEATHER);
                 genUpgradeTemplate(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, Items.DIAMOND, Blocks.DIAMOND_BLOCK.asItem(), Items.IRON_INGOT);
                 //TODO: Probably change this recipe later
-                genUpgradeTemplate(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK.asItem(), Items.GOLD_INGOT);
+                genUpgradeTemplate(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, Items.GOLD_INGOT);
 
                 //Upgrade template usages & new recycling
                 mapUpgrades();
@@ -100,6 +100,24 @@ public class Recipes extends FabricRecipeProvider {
                 genSmithing(RItems.GOLD_UPGRADE_SMITHING_TEMPLATE, GOLD_UPGRADE, net.minecraft.tags.ItemTags.GOLD_TOOL_MATERIALS, Items.GOLD_INGOT, true);
                 genSmithing(RItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE, DIAMOND_UPGRADE, ItemTags.DIAMOND_TOOL_MATERIALS, Items.DIAMOND, false);
                 genSmithing(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NETHERITE_UPGRADE, ItemTags.NETHERITE_TOOL_MATERIALS, Items.NETHERITE_INGOT, true);
+
+                // Copper Horse & Nautilus Armour
+                shaped(RecipeCategory.TOOLS, Items.COPPER_HORSE_ARMOR)
+                        .pattern("###")
+                        .pattern("#O#")
+                        .pattern("###")
+                        .define('#', Items.COPPER_INGOT)
+                        .define('O', Items.LEATHER_HORSE_ARMOR)
+                        .unlockedBy("has_material", has(Items.LEATHER_HORSE_ARMOR))
+                        .save(recipeExporter);
+                shaped(RecipeCategory.TOOLS, Items.COPPER_NAUTILUS_ARMOR)
+                        .pattern("###")
+                        .pattern("#O#")
+                        .pattern("###")
+                        .define('#', Items.COPPER_INGOT)
+                        .define('O', Items.NAUTILUS_SHELL)
+                        .unlockedBy("has_material", has(Items.NAUTILUS_SHELL))
+                        .save(recipeExporter);
 
                 //Chainmail Armor
                 shaped(RecipeCategory.TOOLS, Items.CHAINMAIL_HELMET)

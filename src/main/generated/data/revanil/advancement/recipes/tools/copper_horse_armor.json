@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:netherite_scrap"
+            "items": "minecraft:leather_horse_armor"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "revanil:netherite_upgrade_smithing_template_core"
+        "recipe": "revanil:copper_horse_armor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "revanil:netherite_upgrade_smithing_template_core"
+      "revanil:copper_horse_armor"
     ]
   }
 }
