@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.Block;
 import net.pm.revanil.Revanil;
 import net.pm.revanil.world.item.RItems;
+import net.pm.revanil.world.level.block.RBlocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -48,6 +49,10 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add(DIAMOND_UPGRADE_INGREDIENTS, "Diamond");
 
         translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.applies_to", "Gold Equipment");
+
+        translationBuilder.add(RBlocks.MALACHITE_BLOCK, "Malachite Block");
+        translationBuilder.add(RBlocks.MALACHITE_BLOCK.asItem(), "Malachite Block");
+        translationBuilder.add(RItems.MALACHITE_CHUNK, "Malachite Chunk");
     }
 
     public void addBlockWithItem(TranslationBuilder translationBuilder, Block block, String name) {

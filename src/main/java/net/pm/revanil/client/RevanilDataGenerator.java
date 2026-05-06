@@ -13,6 +13,7 @@ public class RevanilDataGenerator implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
+        pack.addProvider(RBlockLoot::new);
         pack.addProvider(RBlockTags::new);
         pack.addProvider(DynamicRegistries::new);
         pack.addProvider(RItemTags::new);

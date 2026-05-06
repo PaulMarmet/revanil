@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "revanil:block/malachite_block"
+    }
+  }
+}

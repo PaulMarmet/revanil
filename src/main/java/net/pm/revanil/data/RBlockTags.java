@@ -7,6 +7,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.ItemLike;
+import net.pm.revanil.world.level.block.RBlocks;
+
 import java.util.concurrent.CompletableFuture;
 
 public class RBlockTags extends FabricTagsProvider.BlockTagsProvider {
@@ -25,6 +27,9 @@ public class RBlockTags extends FabricTagsProvider.BlockTagsProvider {
                 .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                 .forceAddTag(BlockTags.NEEDS_STONE_TOOL)
                 .setReplace(true);
+
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(RBlocks.MALACHITE_BLOCK);
     }
 
     public Identifier id(ItemLike item) {

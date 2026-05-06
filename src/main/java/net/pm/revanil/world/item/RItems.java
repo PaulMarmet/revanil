@@ -15,6 +15,7 @@ public class RItems {
     public static final Item IRON_UPGRADE_SMITHING_TEMPLATE = register("iron_upgrade_smithing_template", SmithingTemplateItems::createIronUpgrade, new Item.Properties());
     public static final Item GOLD_UPGRADE_SMITHING_TEMPLATE = register("gold_upgrade_smithing_template", SmithingTemplateItems::createGoldUpgrade, new Item.Properties());
     public static final Item DIAMOND_UPGRADE_SMITHING_TEMPLATE = register("diamond_upgrade_smithing_template", SmithingTemplateItems::createDiamondUpgrade, new Item.Properties());
+    public static final Item MALACHITE_CHUNK = register("malachite_chunk", Item::new, new Item.Properties());
 
     public static Item register(String name, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
         return register(Identifier.fromNamespaceAndPath(Revanil.MOD_ID, name), itemFactory, settings);

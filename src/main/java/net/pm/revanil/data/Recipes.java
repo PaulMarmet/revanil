@@ -18,6 +18,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.pm.revanil.Revanil;
 import net.pm.revanil.world.item.RItems;
+import net.pm.revanil.world.level.block.RBlocks;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -147,6 +148,19 @@ public class Recipes extends FabricRecipeProvider {
                         .define('#', Items.IRON_CHAIN)
                         .unlockedBy("has_material", has(Items.IRON_INGOT))
                         .save(recipeExporter);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, RBlocks.MALACHITE_BLOCK)
+                        .pattern("##")
+                        .pattern("##")
+                        .define('#', RItems.MALACHITE_CHUNK)
+                        .unlockedBy("has_material", has(RItems.MALACHITE_CHUNK))
+                        .save(recipeExporter);
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(RItems.MALACHITE_CHUNK), RecipeCategory.MISC, CookingBookCategory.MISC, Items.COPPER_NUGGET, 0.5f, 200)
+                        .unlockedBy("has_material", has(RItems.MALACHITE_CHUNK))
+                        .save(recipeExporter, getSimpleRecipeName(Items.COPPER_NUGGET) + "_from_smelting_" + getSimpleRecipeName(RItems.MALACHITE_CHUNK));
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(RItems.MALACHITE_CHUNK), RecipeCategory.MISC, CookingBookCategory.MISC, Items.COPPER_NUGGET, 0.5f, 100)
+                        .unlockedBy("has_material", has(RItems.MALACHITE_CHUNK))
+                        .save(recipeExporter, getSimpleRecipeName(Items.COPPER_NUGGET) + "_from_blasting_" + getSimpleRecipeName(RItems.MALACHITE_CHUNK));
             }
 
             public void genUpgradeTemplate(Item template, Item material, Item core, Item other) {
