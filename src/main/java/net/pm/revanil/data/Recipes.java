@@ -1,6 +1,6 @@
 package net.pm.revanil.data;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,6 +13,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.pm.revanil.Revanil;
@@ -23,7 +24,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class Recipes extends FabricRecipeProvider {
-    public Recipes(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public Recipes(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
@@ -185,10 +186,10 @@ public class Recipes extends FabricRecipeProvider {
 
                 if (reduce) {
                     //Reducing back to material
-                    SimpleCookingRecipeBuilder.smelting(Ingredient.of(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 200)
+                    SimpleCookingRecipeBuilder.smelting(Ingredient.of(upgrades.values().stream()), RecipeCategory.MISC, CookingBookCategory.MISC, matRep, 0.5f, 200)
                             .unlockedBy("has_material", has(template))
                             .save(recipeExporter, getSimpleRecipeName(matRep) + "_reduction_from_smelting");
-                    SimpleCookingRecipeBuilder.blasting(Ingredient.of(upgrades.values().stream()), RecipeCategory.MISC, matRep, 0.5f, 100)
+                    SimpleCookingRecipeBuilder.blasting(Ingredient.of(upgrades.values().stream()), RecipeCategory.MISC, CookingBookCategory.MISC, matRep, 0.5f, 100)
                             .unlockedBy("has_material", has(template))
                             .save(recipeExporter, getSimpleRecipeName(matRep) + "_reduction_from_blasting");
                 }

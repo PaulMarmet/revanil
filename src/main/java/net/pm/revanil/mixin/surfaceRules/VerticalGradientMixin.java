@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SurfaceRules.VerticalGradientConditionSource.class)
 public class VerticalGradientMixin {
 	@Inject(method = "apply(Lnet/minecraft/world/level/levelgen/SurfaceRules$Context;)Lnet/minecraft/world/level/levelgen/SurfaceRules$Condition;", at = @At("TAIL"), cancellable = true)
-	private void revanil$chunked(SurfaceRules.Context context, CallbackInfoReturnable<SurfaceRules.Condition> cir, @Local(ordinal = 0) int bottomInc, @Local(ordinal = 1) int topExc, @Local PositionalRandomFactory positionalRandomFactory) {
+	private void revanil$chunked(SurfaceRules.Context context, CallbackInfoReturnable<SurfaceRules.Condition> cir, @Local(name = "trueAtAndBelow") int bottomInc, @Local(name = "falseAtAndAbove") int topExc, @Local(name = "randomFactory") PositionalRandomFactory positionalRandomFactory) {
 		// idk, seems to be working to me...
 		class VerticalGradientCondition extends SurfaceRules.LazyYCondition {
 			protected VerticalGradientCondition(SurfaceRules.Context context) {
@@ -34,7 +34,7 @@ public class VerticalGradientMixin {
 					//get random number from chunk pos & also bottomInc since we need a y
 					//could change this to use some other stat later if we want it to be smooth
 					ChunkAccess chunk = this.context.chunk;
-					RandomSource random = positionalRandomFactory.at(chunk.getPos().x, bottomInc, chunk.getPos().z);
+					RandomSource random = positionalRandomFactory.at(chunk.getPos().x(), bottomInc, chunk.getPos().z());
 					return random.nextFloat() < d;
 				}
 			}

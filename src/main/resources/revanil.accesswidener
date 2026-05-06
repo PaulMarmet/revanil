@@ -1,6 +1,8 @@
-accessWidener v2 named
+accessWidener v2 official
 
 accessible method net/minecraft/world/item/FireChargeItem playSound (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+
+accessible method net/minecraft/world/item/Items registerItem (Ljava/lang/String;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/Item;
 
 accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HELMET Lnet/minecraft/resources/Identifier;
 accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_CHESTPLATE Lnet/minecraft/resources/Identifier;
@@ -38,4 +40,3 @@ accessible method net/minecraft/world/level/levelgen/NoiseGeneratorSettings neth
 accessible method net/minecraft/world/level/levelgen/NoiseGeneratorSettings end (Lnet/minecraft/data/worldgen/BootstrapContext;)Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
 accessible method net/minecraft/world/level/levelgen/NoiseGeneratorSettings caves (Lnet/minecraft/data/worldgen/BootstrapContext;)Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
 accessible method net/minecraft/world/level/levelgen/NoiseGeneratorSettings floatingIslands (Lnet/minecraft/data/worldgen/BootstrapContext;)Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
-

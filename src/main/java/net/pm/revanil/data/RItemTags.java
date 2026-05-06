@@ -1,7 +1,7 @@
 package net.pm.revanil.data;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,10 +15,10 @@ import net.pm.revanil.Revanil;
 
 import java.util.concurrent.CompletableFuture;
 
-public class RItemTags extends FabricTagProvider.ItemTagProvider {
+public class RItemTags extends FabricTagsProvider.ItemTagsProvider {
     public static final TagKey<Item> FIREPROOF = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Revanil.MOD_ID, "fireproof"));
 
-    public RItemTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public RItemTags(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 

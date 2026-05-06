@@ -1,6 +1,7 @@
 package net.pm.revanil.data;
 
 import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries;
+import dev.worldgen.lithostitched.api.util.InjectionType;
 import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
@@ -79,7 +80,7 @@ public class RLithoSurface {
         );
 
         context.register(shallow_seams,
-                WorldgenModifier.builder().appendSurfaceRule(LevelStem.OVERWORLD, SurfaceRules.sequence(
+                WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.APPEND, SurfaceRules.sequence(
                         shallowStoneSeams(),
                         shallowSoilSeams()
                 )));
@@ -87,7 +88,7 @@ public class RLithoSurface {
         // Deep seams only where deepslate will be
         // we need to add checks so that it doesn't encroach on Bedrock or Stone... so here they are
         context.register(deep_seams,
-                WorldgenModifier.builder().prependSurfaceRule(LevelStem.OVERWORLD, SurfaceRules.ifTrue(
+                WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.PREPEND, SurfaceRules.ifTrue(
                         SurfaceRules.not(
                                 SurfaceRules.verticalGradient("bedrock_floor_location",
                                         VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5))),
@@ -100,14 +101,14 @@ public class RLithoSurface {
 
 //        // kinda buggy
 //        context.register(nether_seams,
-//                WorldgenModifier.builder().prependSurfaceRule(LevelStem.NETHER, SurfaceRules.sequence(
+//                WorldgenModifier.builder().addSurfaceRule(LevelStem.NETHER, InjectionType.PREPEND, SurfaceRules.sequence(
 //                        netherStoneSeams(),
 //                        netherSoilSeams()
 //                )));
 
         //technically still has the same issues as the other ones too but I like it sooooooo
         context.register(end_seams,
-                WorldgenModifier.builder().prependSurfaceRule(LevelStem.END, SurfaceRules.sequence(
+                WorldgenModifier.builder().addSurfaceRule(LevelStem.END, InjectionType.PREPEND, SurfaceRules.sequence(
                         endStoneSeams(),
                         endSoilSeams()
                 )));

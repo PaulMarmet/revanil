@@ -2,7 +2,6 @@ package net.pm.revanil.mixin;
 
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.pm.revanil.data.RItemTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,11 +18,11 @@ public abstract class ItemEntityMixin {
 	@Shadow
 	public abstract ItemStack getItem();
 
-	// Currently Unused
-	@Inject(method = "fireImmune", at = @At(value="RETURN"), cancellable = true)
-	public void revanil$fireImmune(CallbackInfoReturnable<Boolean> cir) {
-		boolean hasTag = this.getItem().is(RItemTags.FIREPROOF);
-		cir.setReturnValue(cir.getReturnValue() || hasTag);
-	}
+//	// Currently Unused
+//	@Inject(method = "fireImmune", at = @At(value="RETURN"), cancellable = true)
+//	public void revanil$fireImmune(CallbackInfoReturnable<Boolean> cir) {
+//		boolean hasTag = this.getItem().is(RItemTags.FIREPROOF);
+//		cir.setReturnValue(cir.getReturnValue() || hasTag);
+//	}
 
 }

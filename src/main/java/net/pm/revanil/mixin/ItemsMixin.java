@@ -11,10 +11,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Slice;
 
-import static net.minecraft.world.item.Items.registerItem;
-
 @Mixin(Items.class)
 public class ItemsMixin {
+
     @WrapOperation(method = "<clinit>", slice = @Slice(from = @At(value="CONSTANT", args="stringValue=beetroot", ordinal = 0)), at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;food(Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/Item$Properties;", ordinal = 0))
     private static Item.Properties revanil$beetrootEffect(Item.Properties instance, FoodProperties foodProperties, Operation<Item.Properties> original) {
         return instance.food(foodProperties, RConsumables.BEETROOT);
@@ -27,7 +26,7 @@ public class ItemsMixin {
 
     @WrapOperation(method = "<clinit>", slice = @Slice(from = @At(value="CONSTANT", args="stringValue=glistering_melon_slice", ordinal = 0)), at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Items;registerItem(Ljava/lang/String;)Lnet/minecraft/world/item/Item;", ordinal = 0))
     private static Item revanil$glisteringMelonSlice(String string, Operation<Item> original) {
-        return registerItem(string, (new Item.Properties()).food(RFoods.GLISTERING_MELON_SLICE, RConsumables.GLISTERING_MELON_SLICE));
+        return Items.registerItem(string, (new Item.Properties()).food(RFoods.GLISTERING_MELON_SLICE, RConsumables.GLISTERING_MELON_SLICE));
     }
 
     @WrapOperation(method = "<clinit>", slice = @Slice(from = @At(value="CONSTANT", args="stringValue=glow_berries", ordinal = 0)), at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;food(Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/Item$Properties;", ordinal = 0))

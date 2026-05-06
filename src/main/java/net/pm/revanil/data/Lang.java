@@ -1,6 +1,6 @@
 package net.pm.revanil.data;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.Block;
@@ -23,7 +23,7 @@ public class Lang extends FabricLanguageProvider {
     public static final String DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.base_slot_description";
     public static final String DIAMOND_UPGRADE_INGREDIENTS = "item."+ Revanil.MOD_ID+".smithing_template.diamond_upgrade.ingredients";
 
-    public Lang(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+    public Lang(FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, "en_us", registryLookup);
     }
 
